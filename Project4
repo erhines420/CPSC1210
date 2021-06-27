@@ -1,0 +1,146 @@
+/**
+* Program that reads data and prints.
+* Activity 4
+* Erik Rhines CPSC 121.
+* June 19 2021
+*/
+
+import java.text.DecimalFormat;
+/* 
+* Important for number.
+*/
+public class Ellipsoid 
+{
+//instance variables.
+//three axes a,b, and c.
+//initialize.
+   private String label = "";
+   private double a = 0;
+   private double b = 0;
+   private double c = 0;
+   //Constructor
+
+
+   public Ellipsoid(String label, getA, getB, getC) {
+   /*
+   * @return label field.
+   */
+      setLabel(label);
+      setA(a);
+      setB(b);
+      setC(c);
+   }
+  /**
+  *
+  * @return if String is not null.
+  * Return true.
+  */
+
+   public String getLabel() {
+      return label;
+   }
+
+   public boolean setLabel(String label)
+   {
+      if (label != null)
+      {
+         this.label = label.trim();
+         return true;
+      }
+      else {
+      }
+      return false;
+   
+   }
+/**
+* @return field a.
+*/
+   public double getA() {
+      return a;
+   }
+   /**
+   * @param double a.
+   * @return if a>0 return true.
+   */
+   public boolean setA(double a)
+   {
+      if (a > 0)
+      {
+         this.a = a;
+         return true;
+      }
+      else
+         return false;
+   }
+/**
+* @return field b.
+*/
+   public double getB() {
+      return b;
+   }
+   /**
+   * @param double b.
+   * @return if true b>0.
+   */
+   public boolean setB(double b)
+   {
+      if (b > 0)
+      {
+         this.b = b;
+         return true;
+      }
+      else
+         return false;
+   }
+/**
+* @return field c.
+*/
+   public double getC() {
+      return c;
+   }
+/**
+*@param double c.
+* @return true if c>0.
+*/
+   public boolean setC(double c)
+   {
+      if (c > 0)
+      {
+         this.c = c;
+         return true;
+      }
+      else {
+      }
+      return false;
+   }
+   /**
+   * @return volume calculated.
+   */
+   public double volume()
+   {
+      return (4 * Math.PI * a * b * c) / 3;
+   }
+   /**
+   * @return calculated surfaceArea
+   */
+   public double surfaceArea()
+   {
+      double sa = (Math.pow((a * b), 1.6) 
+         + Math.pow((a * c), 1.6) + Math.pow((b * c), 1.6)) / 3;
+      sa = 4 * Math.PI * Math.pow(sa, (1.0 / 1.6));
+      return sa;
+   }
+/*
+* @return String representation of Ellipsoid object.
+*/
+   @Override
+   public String toString() {
+      DecimalFormat decimalFormat = new DecimalFormat("#,##0.0###");
+      return "Ellipsoid \"" + label + "\" with axes a = " + getA() 
+         + ", b = " + getB() + ", c = " + getC()
+             + " units has:\n\tvolume = " + decimalFormat.format(volume()) 
+             + " cubic units" 
+             + "\n\tsurface area = " + decimalFormat.format(surfaceArea()) 
+             + " square units";
+   }
+}
